@@ -28,7 +28,7 @@
                           <p>Ingresar con</p>
                       </div>
     				  <div class="btn-login">	                
-                        <a href="dashboard" class="waves-effect blue darken-4 btn">Facebook</a>
+                        <a  class="waves-effect blue darken-4 btn" href="{{ url('/auth/facebook') }}">Facebook</a>
     			      </div>
                   </div>
             </section>              

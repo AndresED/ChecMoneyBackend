@@ -23,7 +23,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-
+Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
 
 //Auth::routes();
 

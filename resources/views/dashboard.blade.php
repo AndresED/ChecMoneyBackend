@@ -30,9 +30,9 @@
                         <div class="background">
                             <img src="http://materializecss.com/images/office.jpg">
                         </div>
-                        <a href="#modal-edit-user" class="modal-trigger"><img class="circle" src="https://lh3.googleusercontent.com/-nMtNqZFk1yY/AAAAAAAAAAI/AAAAAAAAAAA/AMp5VUp_3RqKqJ88Bi4S0wBicQWjB1w7WA/s96-c-mo-md/photo.jpg"></a>
-                        <a href="#!name"><span class="white-text name">Wualter Vera</span></a>
-                        <a href="#!email"><span class="white-text email">wveraguerra@gmail.com</span></a>
+                        <a href="#modal-edit-user" class="modal-trigger"><img class="circle" src="{{ Auth::user()->avatar }}"></a>
+                        <a href="#!name"><span class="white-text name">{{ Auth::user()->name }}</span></a>
+                        <a href="#!email"><span class="white-text email">{{ Auth::user()->email }}</span></a>
                     </div>
                 </li>                           
                 <li class="paddign">
@@ -66,13 +66,13 @@
                             <div class="user">
                                 <div class="col s12 m12 l12 no-padding">
                                     <div class="foto-user center-align">
-                                        <a href="#modal-edit-user" class="modal-trigger"><img class="circle responsive-img" src="https://lh3.googleusercontent.com/-nMtNqZFk1yY/AAAAAAAAAAI/AAAAAAAAAAA/AMp5VUp_3RqKqJ88Bi4S0wBicQWjB1w7WA/s96-c-mo-md/photo.jpg"></a>
+                                        <a href="#modal-edit-user" class="modal-trigger"><img class="circle responsive-img" src="{{ Auth::user()->avatar }}"></a>
                                     </div>                                
                                 </div>
                                 <div class="col s12 m12 l12">
                                     <div class="datos-user center-align">
-                                        <a href="#!name"><span class=" grey-text text-lighten-2 name">Wualter Vera</span></a><br>
-                                        <a href="#!mail"><span class=" grey-text text-lighten-2 email">wveraguerra@gmail.com</span></a>                                        
+                                        <a href="#!name"><span class=" grey-text text-lighten-2 name">{{ Auth::user()->name }}</span></a><br>
+                                        <a href="#!mail"><span class=" grey-text text-lighten-2 email">{{ Auth::user()->email }}</span></a>                                        
                                     </div>
                                 </div>
                                                  
