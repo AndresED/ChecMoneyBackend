@@ -25,4 +25,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function loginIndex()
+    {
+        return view('login');
+    }
+    public function dashboardIndex()
+    {
+        return view('dashboard');
+    }
 }
