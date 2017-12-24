@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateAccountsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations. 
      *
      * @return void
      */
@@ -15,6 +15,8 @@ class CreateAccountsTable extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->float('balance');
             $table->timestamps();
         });
     }
