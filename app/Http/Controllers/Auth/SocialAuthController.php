@@ -38,5 +38,9 @@ class SocialAuthController extends Controller
             'fb_id' => $user->id
         ]);
     }
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login');
+    }
 }
 

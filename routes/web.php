@@ -17,11 +17,18 @@ Route::get('/', function () {
 
 Route::get('/login', function () {
     return view('login');
-});
+})->name("login");
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+	if (Auth::check()) {
+	    return view('dashboard');
+	}else{
+		return redirect()->route('login');
+	}
+    
 });
+
+Route::get('logout', 'Auth\SocialAuthController@logout');
 
 Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');

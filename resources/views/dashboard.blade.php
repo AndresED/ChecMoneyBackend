@@ -48,7 +48,7 @@
                 </li>
                 <li><div class="divider   blue-grey darken-3"></div></li>    
                 <li class="paddign">
-                    <a href="./" class="valign-wrapper grey-text text-lighten-2"><i class="material-icons icons-nav orange-text">power_settings_new</i> Cerrar sesion</a>
+                    <a href="logout" class="valign-wrapper grey-text text-lighten-2"><i class="material-icons icons-nav orange-text">power_settings_new</i> Cerrar sesion</a>
                 </li>
                 <li><div class="divider   blue-grey darken-3"></div></li>    
                 <li class="paddign">
@@ -96,7 +96,7 @@
                                 </li>                                
                                 <li><div class="divider   blue-grey darken-3"></div></li>
                                 <li class="paddign">
-                                    <a href="./" class="valign-wrapper grey-text text-lighten-2"><i class="material-icons icons-nav orange-text">power_settings_new</i> Cerrar sesion</a>
+                                    <a href="logout" class="valign-wrapper grey-text text-lighten-2"><i class="material-icons icons-nav orange-text">power_settings_new</i> Cerrar sesion</a>
                                 </li>
                                 <li><div class="divider   blue-grey darken-3"></div></li>    
                                 <li class="paddign">
