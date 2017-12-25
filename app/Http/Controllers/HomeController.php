@@ -87,7 +87,7 @@ class HomeController extends Controller
             }
         $total=$total_ingresos-$total_gastos;
         //dd(json_encode($tipo_transactions));
-        return View::make('dashboard')->with([
+        return view('dashboard',[
             'ingresos' => $ingresos,
             'gastos' => $gastos,
             'cuentas' => $cuentas,

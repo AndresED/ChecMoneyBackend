@@ -115,7 +115,9 @@
               <div class="footer-copyright">
                 <div class="container">
                 © 2017 Copyright Checkmoney
-                <a class="grey-text text-lighten-4 right" href="https://www.linkedin.com/in/wualtervera/">(By) Wualter Vera</a>
+                <div class="right">
+                <a class="grey-text text-lighten-4"  href="https://www.linkedin.com/in/wualtervera/">Developer by Wualter Vera</a>  |  <a  class="grey-text text-lighten-4" href="https://andresed.me/">Andrés Esquivel</a>
+                </div>
                 </div>
               </div>
            </footer>

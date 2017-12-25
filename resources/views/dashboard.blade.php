@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <title></title>
@@ -299,14 +299,17 @@
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat ">Cerrar</a>
                 <button type="submit" class="modal-action waves-effect waves-green btn-flat">Guardar</button>
             </div>
+            </form>
         </div>
         <!--Fin modal nuevo movimiento -->
         <!--Inicio modal nueva cuenta -->
         <div id="modal-nueva-cuenta" class="modal modal-fixed-footer">
             <form method="POST" action="/register-account">
                  {{csrf_field()}}
+                 
             <div class="modal-content">
                 <h6>Nueva Cuenta</h6>
+                <input id="first_name" type="hidden" name="account" value="si" class="validate input-monto">
                 <div class="row row-imput">                                            
                     <div class="input-field col s12">
                         <input id="first_name" type="text" name="name" class="validate input-monto">
