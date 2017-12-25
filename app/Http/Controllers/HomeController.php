@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 class HomeController extends Controller
 {
     /**
@@ -29,8 +31,55 @@ class HomeController extends Controller
     {
         return view('login');
     }
-    public function dashboardIndex()
+    public function showDashboard()
     {
-        return view('dashboard');
+        if (Auth::check()) {
+
+        $ingresos = DB::table('transactions')
+            ->select('transactions.*')
+                  ->where([
+                    ['user_id',"=", Auth::user()->id],
+                    ['type_transaction_id',"=", 1],
+            ])->get();
+        
+        $gastos = DB::table('transactions')
+            ->select('transactions.*')
+                  ->where([
+                    ['user_id',"=", Auth::user()->id],
+                    ['type_transaction_id',"=", 2],
+            ])->get();
+
+        
+
+        $cuentas = DB::table('accounts')
+            ->select('accounts.*')
+                  ->where([
+                    ['user_id',"=", Auth::user()->id],
+            ])->get();
+
+        
+
+        $categorias = DB::table('categories')
+            ->select('categories.*')
+                  ->where([
+                    ['user_id',"=", Auth::user()->id],
+            ])->get();
+
+
+        $tipo_transactions = DB::table('type_transactions')
+            ->select('type_transactions.*')
+            ->get();
+        
+        //dd(json_encode($tipo_transactions));
+        return View::make('dashboard')->with([
+            'ingresos' => $ingresos,
+            'gastos' => $gastos,
+            'cuentas' => $cuentas,
+            'categorias' => $categorias,
+            'tipo_transactions'=>$tipo_transactions,
+        ]);
+    }else{
+        return redirect()->route('login');
+    }
     }
 }

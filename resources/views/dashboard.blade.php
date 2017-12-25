@@ -154,11 +154,12 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($ingresos as $ingresos)
                                             <tr>
-                                                <td>00001</td>
-                                                <td>27/06/2017</td>
+                                                <td>{{$ingresos->id}}</td>
+                                                <td>{{$ingresos->date}}</td>
                                                 <td>BBVA</td>
-                                                <td>S/.1800.00</td>
+                                                <td>S/. {{$ingresos->mount}}</td>
                                                 <td>Ingreso</td>
                                                 <td>Salario mensual</td>
                                                 <td>
@@ -166,18 +167,7 @@
                                                     <a href="" class="editar"><i class="tiny material-icons">edit</i></a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>00002</td>
-                                                <td>31/06/2017</td>
-                                                <td>INTERBANCK</td>
-                                                <td>S/. 600.00</td>
-                                                <td>Ingreso</td>
-                                                <td>Bonificación escolar</td>
-                                                <td>
-                                                    <a href="" class="eliminar"><i class="tiny material-icons red-text">delete</i></a>
-                                                    <a href="" class="editar"><i class="tiny material-icons">edit</i></a>
-                                                </td>
-                                            </tr>
+                                           @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -215,18 +205,20 @@
                                             </tr>
                                         </thead>
                                         <tbody>                                            
+                                            @foreach ($gastos as $gastos)
                                             <tr>
-                                                <td>00003</td>
-                                                <td>06/05/2017</td>
-                                                <td>INTERBANCK</td>
-                                                <td>S/. 50.87</td>
+                                                <td>{{$gastos->id}}</td>
+                                                <td>{{$gastos->date}}</td>
+                                                <td>BBVA</td>
+                                                <td>S/. {{$gastos->mount}}</td>
                                                 <td>Egreso</td>
-                                                <td>Pago de Luz</td>
+                                                <td>Salario mensual</td>
                                                 <td>
                                                     <a href="" class="eliminar"><i class="tiny material-icons red-text">delete</i></a>
                                                     <a href="" class="editar"><i class="tiny material-icons">edit</i></a>
                                                 </td>
                                             </tr>
+                                           @endforeach
                                         </tbody>
                                     </table>                                    
                                 </div>                               
@@ -266,10 +258,10 @@
                 <div class="row row-imput">
                     <div class="input-field col s12">
                         <select>
-                            <option value="" disabled selected>Selecione la cueenta</option>
-                            <option value="1">BBVA</option>
-                            <option value="2">INTERBANCK</option>
-                            <option value="3">BCP</option>
+                            <option value="" disabled selected>Selecione la cuenta</option>
+                            @foreach ($cuentas as $cuenta)
+                                <option value="{{$cuenta->id}}">{{$cuenta->name}}</option>
+                            @endforeach
                         </select>
                         <label>Cuenta bancaria</label>
                     </div>
@@ -283,17 +275,19 @@
                     </div>
                     <div class="input-field col s12">
                         <select>
-                            <option value="" disabled selected>Seleccione</option>
-                            <option value="1">Ingreso</option>
-                            <option value="2">Gasto</option>
+                            <option value="-1" disabled selected>Seleccione</option>
+                            @foreach ($tipo_transactions as $tipo_transaction)
+                                <option value="{{$tipo_transaction->id}}">{{$tipo_transaction->name}}</option>
+                            @endforeach
                         </select>
                         <label>Movimiento</label>
                     </div>
                     <div class="input-field col s12">
                         <select>
-                            <option value="" disabled selected>Selecione</option>
-                            <option value="1">Sueldo</option>
-                            <option value="2">Bonificacion escolar</option>
+                            <option value="" disabled selected>Selecione</option>.
+                            @foreach ($categorias as $categoria)
+                                <option value="{{$categoria->id}}">{{$categoria->name}}</option>
+                            @endforeach
                         </select>
                         <label>Categoría</label>
                     </div>                                                        
@@ -307,70 +301,62 @@
         <!--Fin modal nuevo movimiento -->
         <!--Inicio modal nueva cuenta -->
         <div id="modal-nueva-cuenta" class="modal modal-fixed-footer">
+            <form method="POST" action="/register-account">
+                 {{csrf_field()}}
             <div class="modal-content">
                 <h6>Nueva Cuenta</h6>
                 <div class="row row-imput">                                            
                     <div class="input-field col s12">
-                        <input id="first_name" type="text" class="validate input-monto">
+                        <input id="first_name" type="text" name="name" class="validate input-monto">
                         <label for="first_name">Nombre</label>
                     </div>
                     <div class="categorias col s12">
                         <ul class="col s12 m12 l12">
-                            <li class="col s12 m12 l12">BCP
-                                <a href="" class="eliminar"><i class="tiny material-icons red-text">delete</i></a>
-                                <a href="" class="editar"><i class="tiny material-icons">edit</i></a>
+                            @foreach ($cuentas as $cuenta)
+                            <li class="col s12 m12 l12">{{$cuenta->name}}
+                                <a href="/deleted-account/{{$cuenta->id}}" class="eliminar"><i class="tiny material-icons red-text">delete</i></a>
+                                <!--<a href="" class="editar"><i class="tiny material-icons">edit</i></a>-->
                             </li>
-                            <!--<hr class="teal lighten-5" />-->
-                            <li class="col s12 m12 l12">INTERBACK
-                                <a href="" class="eliminar"><i class="tiny material-icons red-text">delete</i></a>
-                                <a href="" class="editar"><i class="tiny material-icons">edit</i></a>
-                            </li>
-                            <li class="col s12 m12 l12">BBVA
-                                <a href="" class="eliminar"><i class="tiny material-icons red-text">delete</i></a>
-                                <a href="" class="editar"><i class="tiny material-icons">edit</i></a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>                                        
                 </div>                               
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat ">Cerrar</a>
-                <a href="#!" class="modal-action waves-effect waves-green btn-flat">Guardar</a>
+                <button type="submit" class="modal-action waves-effect waves-green btn-flat">Guardar</button>
             </div>
+        </form>
         </div>
         <!--Fin modal nueva cuenta-->
         <!--Inicio modal nueva categoria -->
         <div id="modal-nueva-categoria" class="modal modal-fixed-footer">
+            <form method="POST" action="/register-category">
+                 {{csrf_field()}}
             <div class="modal-content">
                 <h6>Nueva Categoría</h6>
                 <div class="row row-imput">                                            
                     <div class="input-field col s12">
-                        <input id="first_name" type="text" class="validate input-monto">
+                        <input id="first_name" type="text" name="name" class="validate input-monto">
                         <label for="first_name">Nombre</label>
                     </div>
                     <div class="categorias col s12">
                         <ul class="col s12 m12 l12">
-                            <li class="col s12 m12 l12">Sueldo
-                                <a href="" class="eliminar"><i class="tiny material-icons red-text">delete</i></a>
-                                <a href="" class="editar"><i class="tiny material-icons">edit</i></a>
+                             @foreach ($categorias as $categoria)
+                            <li class="col s12 m12 l12">{{$categoria->name}}
+                                <a href="/deleted-category/{{$categoria->id}}" class="eliminar"><i class="tiny material-icons red-text">delete</i></a>
+                                <!--<a href="" class="editar"><i class="tiny material-icons">edit</i></a>-->
                             </li>
-                            <!--<hr class="teal lighten-5" />-->
-                            <li class="col s12 m12 l12">Bonificacion escolar
-                                <a href="" class="eliminar"><i class="tiny material-icons red-text">delete</i></a>
-                                <a href="" class="editar"><i class="tiny material-icons">edit</i></a>
-                            </li>
-                            <li class="col s12 m12 l12">Pago de Luz
-                                <a href="" class="eliminar"><i class="tiny material-icons red-text">delete</i></a>
-                                <a href="" class="editar"><i class="tiny material-icons">edit</i></a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>                                        
                 </div>                               
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat ">Cerrar</a>
-                <a href="#!" class="modal-action waves-effect waves-green btn-flat">Guardar</a>
+                <button type="submit" class="modal-action waves-effect waves-green btn-flat">Guardar</button>
             </div>
+        </form>
         </div>
         <!--Fin modal nueva categoria--> 
         <!-- FIN MODALES-->
