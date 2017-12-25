@@ -33,23 +33,31 @@ class HomeController extends Controller
     }
     public function showDashboard()
     {
+        $total=0;
+        $total_ingresos=0;
+        $total_gastos=0;
         if (Auth::check()) {
 
-        $ingresos = DB::table('transactions')
-            ->select('transactions.*')
+        $ingresos = DB::table('categories')
+            ->leftjoin("transactions","transactions.category_id","categories.id")
+            ->leftjoin("accounts","accounts.id","transactions.account_id")
+            ->leftjoin("users","users.id","accounts.user_id")
+            ->select('transactions.id','transactions.mount','transactions.date','accounts.name as account_name','categories.name as category_name')
                   ->where([
-                    ['user_id',"=", Auth::user()->id],
-                    ['type_transaction_id',"=", 1],
+                    ['users.id',"=", Auth::user()->id],
+                    ['transactions.type_transaction_id',"=", 1],
             ])->get();
+      
         
-        $gastos = DB::table('transactions')
-            ->select('transactions.*')
+        $gastos = DB::table('categories')
+            ->leftjoin("transactions","transactions.category_id","categories.id")
+            ->leftjoin("accounts","accounts.id","transactions.account_id")
+            ->leftjoin("users","users.id","accounts.user_id")
+            ->select('transactions.id','transactions.mount','transactions.date','accounts.name as account_name','categories.name as category_name')
                   ->where([
-                    ['user_id',"=", Auth::user()->id],
-                    ['type_transaction_id',"=", 2],
+                    ['users.id',"=", Auth::user()->id],
+                    ['transactions.type_transaction_id',"=", 2],
             ])->get();
-
-        
 
         $cuentas = DB::table('accounts')
             ->select('accounts.*')
@@ -70,6 +78,14 @@ class HomeController extends Controller
             ->select('type_transactions.*')
             ->get();
         
+         foreach ($ingresos as $ingreso) {
+                $total_ingresos=$total_ingresos+$ingreso->mount;
+            }  
+            
+        foreach ($gastos as $gasto) {
+                $total_gastos=$total_gastos+$gasto->mount;
+            }
+        $total=$total_ingresos-$total_gastos;
         //dd(json_encode($tipo_transactions));
         return View::make('dashboard')->with([
             'ingresos' => $ingresos,
@@ -77,6 +93,9 @@ class HomeController extends Controller
             'cuentas' => $cuentas,
             'categorias' => $categorias,
             'tipo_transactions'=>$tipo_transactions,
+            'total'=>$total,
+            'total_ingresos'=>$total_ingresos,
+            'total_gastos'=>$total_gastos
         ]);
     }else{
         return redirect()->route('login');

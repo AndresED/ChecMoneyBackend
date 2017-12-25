@@ -35,6 +35,9 @@ Route::get('deleted-account/{id}', 'AccountController@deleted');
 Route::post('register-category', 'CategoryController@register');
 Route::get('deleted-category/{id}', 'CategoryController@deleted');
 
+Route::post('register-transaction', 'TransactionController@register');
+Route::get('deleted-transaction/{id}', 'TransactionController@deleted');
+
 
 Route::get('logout', 'Auth\SocialAuthController@logout');
 

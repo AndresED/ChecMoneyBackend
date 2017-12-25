@@ -36,7 +36,7 @@
                     </div>
                 </li>                           
                 <li class="paddign">
-                    <a href="#!" class="valign-wrapper grey-text text-lighten-2"><i class="material-icons icons-nav orange-text">location_city</i> Patrimonio <span class="patrimonio"><b> S/.2400.00</b></span></a>                                    
+                    <a href="#!" class="valign-wrapper grey-text text-lighten-2"><i class="material-icons icons-nav orange-text">location_city</i> Patrimonio <span class="patrimonio"><b> S/.{{$total}}</b></span></a>                                    
                 </li>                 
                 <li><div class="divider   blue-grey darken-3"></div></li>
                 <li class="paddign">
@@ -84,7 +84,7 @@
                             <ul>
                                 <li><div class="divider   blue-grey darken-3"></div></li>                          
                                 <li class="paddign">
-                                    <a href="#!" class="valign-wrapper grey-text text-lighten-2"><i class="material-icons icons-nav orange-text">location_city</i> Patrimonio <span class="patrimonio"><b> S/.2400.00</b></span></a>                                    
+                                    <a href="#!" class="valign-wrapper grey-text text-lighten-2"><i class="material-icons icons-nav orange-text">location_city</i> Patrimonio <span class="patrimonio"><b> S/.{{$total}}</b></span></a>                                    
                                 </li>                 
                                 <li><div class="divider   blue-grey darken-3"></div></li>
                                 <li class="paddign">
@@ -128,15 +128,15 @@
                                                 <a class="waves-effect btn-small btn modal-trigger blue-grey darken-2" href="#modal-nuevo-movi">Nuevo</a>          
                                             </div>
                                             <div class="col s12 m6 l6 left-align buscar">
-                                                <div class="input-field col s12 m8 l8">
+                                                <!--<div class="input-field col s12 m8 l8">
                                                      <i class="material-icons prefix">search</i>
                                                      <input id="first_name" type="text" class="validate">
                                                      <label for="icon_prefix">fecha o cuenta</label>
-                                                </div>
+                                                </div>-->
                                             </div>
                                             <div class="col s12 m12 l12 center-align">
                                                 <div class="card-panel cardpanel-total blue-grey lighten-3">
-                                                    <h5 class="white-text">Total Ingresos: <span> S/. 2400.00</span></h5>
+                                                    <h5 class="white-text">Total Ingresos: <span> S/. {{$total_ingresos}}</span></h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -158,13 +158,13 @@
                                             <tr>
                                                 <td>{{$ingresos->id}}</td>
                                                 <td>{{$ingresos->date}}</td>
-                                                <td>BBVA</td>
+                                                <td>{{$ingresos->account_name}}</td>
                                                 <td>S/. {{$ingresos->mount}}</td>
                                                 <td>Ingreso</td>
-                                                <td>Salario mensual</td>
+                                                <td> {{$ingresos->category_name}}</td>
                                                 <td>
-                                                    <a href="" class="eliminar"><i class="tiny material-icons red-text">delete</i></a>
-                                                    <a href="" class="editar"><i class="tiny material-icons">edit</i></a>
+                                                    <a href="/deleted-transaction/{{$ingresos->id}}" class="eliminar"><i class="tiny material-icons red-text">delete</i></a>
+                                                    <!--<a href="" class="editar"><i class="tiny material-icons">edit</i></a>-->
                                                 </td>
                                             </tr>
                                            @endforeach
@@ -179,15 +179,15 @@
                                                 <a class="waves-effect btn-small waves-light btn modal-trigger blue-grey darken-2" href="#modal-nuevo-movi">Nuevo</a>          
                                             </div>
                                             <div class="col s12 m6 l6 center-align buscar">
-                                                <div class="input-field col s12 m8 l8">
+                                                <!--<div class="input-field col s12 m8 l8">
                                                      <i class="material-icons prefix">search</i>
                                                      <input id="first_name" type="text" class="validate">
                                                      <label for="icon_prefix">fecha o cuenta</label>
-                                                </div>
+                                                </div>-->
                                             </div>
                                             <div class="col s12 m12 l12 center-align">
                                                 <div class="card-panel cardpanel-total blue-grey lighten-3">
-                                                    <h5 class="white-text">Total Gastos: <span> S/. 50.00</span></h5>
+                                                    <h5 class="white-text">Total Gastos: <span> S/. {{$total_gastos}}</span></h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -209,13 +209,13 @@
                                             <tr>
                                                 <td>{{$gastos->id}}</td>
                                                 <td>{{$gastos->date}}</td>
-                                                <td>BBVA</td>
+                                                <td>{{$gastos->account_name}}</td>
                                                 <td>S/. {{$gastos->mount}}</td>
                                                 <td>Egreso</td>
-                                                <td>Salario mensual</td>
+                                                <td>S/. {{$gastos->category_name}}</td>
                                                 <td>
-                                                    <a href="" class="eliminar"><i class="tiny material-icons red-text">delete</i></a>
-                                                    <a href="" class="editar"><i class="tiny material-icons">edit</i></a>
+                                                    <a href="/deleted-transaction/{{$gastos->id}}" class="eliminar"><i class="tiny material-icons red-text">delete</i></a>
+                                                    <!--<a href="" class="editar"><i class="tiny material-icons">edit</i></a>-->
                                                 </td>
                                             </tr>
                                            @endforeach
@@ -253,11 +253,13 @@
         <!--Fin modal edit datos user-->
         <!-- Inicio modal nuevo movimiento -->
         <div id="modal-nuevo-movi" class="modal modal-fixed-footer ">
+            <form action="register-transaction" method="POST">
+                {{csrf_field()}}
             <div class="modal-content">
                 <h6 class="center-align">Movimiento</h6>
                 <div class="row row-imput">
                     <div class="input-field col s12">
-                        <select>
+                        <select name="account_id">
                             <option value="" disabled selected>Selecione la cuenta</option>
                             @foreach ($cuentas as $cuenta)
                                 <option value="{{$cuenta->id}}">{{$cuenta->name}}</option>
@@ -266,15 +268,15 @@
                         <label>Cuenta bancaria</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="first_name" type="number" class="validate input-monto">
+                        <input id="first_name" type="number" name="mount" class="validate input-monto">
                         <label for="first_name">Monto</label>
                     </div>
                     <div class="input-field col s12">
-                        <input type="text" class="datepicker">
+                        <input type="text" class="datepicker" name="date">
                         <label for="first_name">Fecha</label>
                     </div>
                     <div class="input-field col s12">
-                        <select>
+                        <select name="type_transaction_id">
                             <option value="-1" disabled selected>Seleccione</option>
                             @foreach ($tipo_transactions as $tipo_transaction)
                                 <option value="{{$tipo_transaction->id}}">{{$tipo_transaction->name}}</option>
@@ -283,7 +285,7 @@
                         <label>Movimiento</label>
                     </div>
                     <div class="input-field col s12">
-                        <select>
+                        <select name="category_id">
                             <option value="" disabled selected>Selecione</option>.
                             @foreach ($categorias as $categoria)
                                 <option value="{{$categoria->id}}">{{$categoria->name}}</option>
@@ -295,7 +297,7 @@
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat ">Cerrar</a>
-                <a href="#!" class="modal-action waves-effect waves-green btn-flat">Guardar</a>
+                <button type="submit" class="modal-action waves-effect waves-green btn-flat">Guardar</button>
             </div>
         </div>
         <!--Fin modal nuevo movimiento -->
