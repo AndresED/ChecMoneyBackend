@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-    <title></title>
+    <title>CheckMoney | Gestiona y controla tus finanzas personales</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- en html5 no necesitas indicar el cierre de la etiqueta -->
@@ -16,6 +16,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
     <!-- stilos personalizados -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+      <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+       <!-- for Google -->
+      <meta name="description" content="Checkmoney es un lugar que te ayuda a getionar todo lo que pasa en tu bolcillo." />
+      <meta name="keywords" content="Gestión,Control,Finanzas,Nube" />
+
+      <meta name="author" content="CheckMoney" />
+      <meta name="copyright" content="CheckMoney" />
+      <meta name="application-name" content="CheckMoney" />
+
+      <!-- for Facebook -->
+      <meta property="og:title" content="CheckMoney" />
+      <meta property="og:type" content="article" />
+      <meta property="og:url" content="https://checkmoney.andresed.me/" />
+      <meta property="og:description" content="Checkmoney es un lugar que te ayuda a getionar todo lo que pasa en tu bolcillo.Tu tienes el control de tus gastos e ingresos, gestionalo desde una donde quiera que este a travez de una amagable interfaz de usuario." />
+
+      <!-- for Twitter -->
+      <meta name="twitter:card" content="CheckMoney" />
+      <meta name="twitter:title" content="CheckMoney" />
+      <meta name="twitter:description" content="Checkmoney es un lugar que te ayuda a getionar todo lo que pasa en tu bolcillo.Tu tienes el control de tus gastos e ingresos, gestionalo desde una donde quiera que este a travez de una amagable interfaz de usuario." />
 </head>
 
 <body class="grey lighten-2">
