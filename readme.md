@@ -19,11 +19,8 @@
 	
 	
 <p>Para obtener los valores de las variables anterioremente agregadas les recomiendo pasen por [esta guía en la sección Facebook Login](https://blog.damirmiladinov.com/laravel/laravel-5.2-socialite-facebook-login.html#.WkCriXXXa01)</p>
-
-	
-	<li>Ejecutar el comando: <b>composer update</b></li>
-	<li>Ejecutar las migraciones: <b>php artisan migrate</b></li>
-	<li>Ejecutar servidor: php artisan serve</li>
-	
+<li>Ejecutar el comando: <b>composer update</b></li>
+<li>Ejecutar las migraciones: <b>php artisan migrate</b></li>
+<li>Ejecutar servidor: php artisan serve</li>	
 <li>Demo Online: https://checkmoney.andresed.me/</li>
 </ul>
