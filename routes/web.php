@@ -23,7 +23,7 @@ Route::get('/login', function () {
     if (Auth::check()) {
     	return redirect()->route('dashboard');
     }else{
-    return view('login');
+    	return view('login');
     }
 })->name("login");
 
