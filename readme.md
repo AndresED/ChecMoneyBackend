@@ -9,7 +9,8 @@
 	>	DB_USERNAME=myUserBD
 	>	DB_PASSWORD=password
 	
-	<li>Agregar a su archivo .env lo siguiente:</li>```
+	<li>Agregar a su archivo .env lo siguiente:</li>
+	
 	>	CLIENT_ID_FB=my_id_fb
 	>	CLIENT_SECRET_FB=my_secret_client
 	>	REDIRECT_SOCIAL_FB=http://midominio.com/auth/facebook/callback
