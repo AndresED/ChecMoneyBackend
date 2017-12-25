@@ -16,7 +16,10 @@
 	>	CLIENT_SECRET_FB=my_secret_client
 	>	REDIRECT_SOCIAL_FB=http://midominio.com/auth/facebook/callback
 	
-	<p>Para obtener los valores de las variables anterioremente agregadas les recomiendo pasen por [esta guía en la sección Facebook Login](https://blog.damirmiladinov.com/laravel/laravel-5.2-socialite-facebook-login.html#.WkCriXXXa01)</p>
+	
+	
+<p>Para obtener los valores de las variables anterioremente agregadas les recomiendo pasen por [esta guía en la sección Facebook Login](https://blog.damirmiladinov.com/laravel/laravel-5.2-socialite-facebook-login.html#.WkCriXXXa01)</p>
+
 	
 	<li>Ejecutar el comando: <b>composer update</b></li>
 	<li>Ejecutar las migraciones: <b>php artisan migrate</b></li>
