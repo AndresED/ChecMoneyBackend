@@ -9,7 +9,8 @@
 	>	DB_USERNAME=myUserBD
 	>	DB_PASSWORD=password
 	
-	<li>Agregar a su archivo .env lo siguiente:</li>
+	
+<li>Agregar a su archivo .env lo siguiente:</li>
 
 	>	CLIENT_ID_FB=my_id_fb
 	>	CLIENT_SECRET_FB=my_secret_client
@@ -20,4 +21,6 @@
 	<li>Ejecutar el comando: <b>composer update</b></li>
 	<li>Ejecutar las migraciones: <b>php artisan migrate</b></li>
 	<li>Ejecutar servidor: php artisan serve</li>
+	
+<li>Demo Online: https://checkmoney.andresed.me/</li>
 </ul>
